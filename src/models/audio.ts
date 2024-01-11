@@ -1,5 +1,5 @@
 import { categories, categoriesTypes } from "#/utils/audio_category";
-import { Model, Schema, model } from "mongoose";
+import { Model, Schema, model, models } from "mongoose";
 import { ObjectId } from "mongoose";
 
 export interface AudioDocument {
@@ -60,4 +60,6 @@ const AudioSchema = new Schema<AudioDocument>(
   }
 );
 
-model("Audio", AudioSchema) as Model<AudioDocument>;
+const Audio = models.Audio || model("Audio", AudioSchema);
+
+export default Audio as Model<AudioDocument>;
