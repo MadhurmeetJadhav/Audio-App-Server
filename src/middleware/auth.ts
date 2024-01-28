@@ -49,7 +49,7 @@ export const mustAuth: RequestHandler = async (req, res, next) => {
 };
 
 export const isVerfied: RequestHandler = (req, res, next) => {
-  if (req.user.verified)
+  if (!req.user.verifyEmail)
     return res.status(403).json({ error: "Please verify your email account" });
 
   next();
